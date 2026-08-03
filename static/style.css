@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #8e44ad);
+    min-height: 100vh;
+}
+
+.welcome-card,
+.form-card {
+    width: 700px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+/* Specific styling for the result card to support dynamic backgrounds */
+.result-card {
+    width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+h1 {
+    color: #4a148c;
+}
+
+p {
+    font-size: 18px;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #6a11cb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+    background: #2575fc;
+    transform: scale(1.05);
+}
+
+.result-card img {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+/* --- Dynamic Colors for Results --- */
+
+/* Low Addiction - Green Layout */
+.result-card.low {
+    background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+}
+.result-card.low h1,
+.result-card.low h2,
+.result-card.low p {
+    color: white !important;
+}
+
+/* Medium Addiction - Orange Layout */
+.result-card.medium {
+    background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+}
+.result-card.medium h1,
+.result-card.medium h2,
+.result-card.medium p {
+    color: white !important;
+}
+
+/* High Addiction - Red Layout */
+.result-card.high {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+}
+.result-card.high h1,
+.result-card.high h2,
+.result-card.high p {
+    color: white !important;
+}
