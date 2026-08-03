@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="result-card {{ css_class }}">
+
+    <h1>Your Result</h1>
+
+    <h2>
+        Your Addiction Level: {{ result }}
+    </h2>
+
+    <img src="{{ url_for('static', filename='graph.png') }}?v=1"
+         width="700">
+
+    <br><br>
+
+    {% if result == "Low" %}
+        <p>🟢 Great! Your social media usage appears balanced.</p>
+
+    {% elif result == "Medium" %}
+        <p>🟡 Moderate usage detected. Consider taking regular breaks.</p>
+
+    {% else %}
+        <p>🔴 High addiction detected. Try reducing screen time and improving sleep habits.</p>
+
+    {% endif %}
+
+    <a href="/form">
+        <button>Check Again</button>
+    </a>
+
+</div>
+
+</body>
+</html>
