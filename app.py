@@ -9,6 +9,9 @@ app = Flask(__name__)
 # Load Dataset
 df = pd.read_csv("social_media_addiction_dataset.csv")
 
+# Remove any leading/trailing spaces from Addiction_Level values
+df["Addiction_Level"] = df["Addiction_Level"].astype(str).str.strip()
+
 # Convert labels to numbers
 df["Addiction_Level"] = df["Addiction_Level"].map({
     "Low": 0,
@@ -24,6 +27,7 @@ X = df[[
     "Study_Hours",
     "Mood_Level"
 ]]
+
 y = df["Addiction_Level"]
 
 # Scale Features to balance weights
@@ -81,31 +85,31 @@ def predict():
         1: "Medium",
         2: "High"
     }
+
     result = levels[prediction]
 
     # --- Pure Screen Time Guard Filters (No App Opens) ---
-    # Low Condition: 2 hours or less of Screen Time
     if screen_time <= 2:
         result = "Low"
-        
-    # High Condition: 7 hours or more of Screen Time
+
     elif screen_time >= 7:
         result = "High"
-        
-    # Medium Condition: Between 3 and 6 hours of Screen Time
+
     else:
         result = "Medium"
 
-    # --- Setup CSS Classes and Graph Colors based on the final scale results ---
+    # --- Setup CSS Classes and Graph Colors ---
     if result == "High":
         css_class = "high"
-        bar_color = "#e74c3c"  # Red
+        bar_color = "#e74c3c"
+
     elif result == "Medium":
         css_class = "medium"
-        bar_color = "#f39c12"  # Orange
+        bar_color = "#f39c12"
+
     else:
         css_class = "low"
-        bar_color = "#2ecc71"  # Green
+        bar_color = "#2ecc71"
 
     # Create Graph
     plt.figure(figsize=(8, 5))
@@ -126,7 +130,6 @@ def predict():
         mood_level
     ]
 
-    # Dynamically match chart bars to the user's profile result color scheme
     plt.bar(labels, values, color=bar_color)
     plt.title("Your Social Media Usage Profile")
     plt.ylabel("Values")
