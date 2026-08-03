@@ -142,6 +142,5 @@ http://127.0.0.1:5000
 
 ---
 
-## Author
 
-Developed as a Machine Learning mini project using Flask and Logistic Regression.
+Developed as a Machine Learning project using Flask and Logistic Regression.
